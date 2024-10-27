@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jem's Bike Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script> 
+    <style>
+        /* Basic reset and styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 100px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .logo {
+            font-size: 2em;
+            color: red;
+            user-select: none;
+        }
+
+        .navigation a {
+            position: relative;
+            font-size: 1.1em;
+            color: rgb(6, 6, 6);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 40px;
+        }
+
+        /* Login button */
+        .navigation .btnLogin-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #331ab3;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #4927bc;
+            font-weight: 500;
+            margin-left: 40px;
+            transition: 0.5s;
+        }
+
+        .btnLogin-popup:hover {
+            background-color: #fff;
+            color: grey;
+        }
+
+        /* Wrapper for the form */
+        .wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 470px;
+            background: white;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: height .2s ease;
+        }
+
+        .form-box {
+            width: 100%;
+            padding: 20px;
+            display: none; /* Hide both forms by default */
+        }
+
+        .form-box.active {
+            display: block; /* Show the active form */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8em; /* Increased size for visibility */
+        }
+
+        .input-box {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding does not affect width */
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 15px 0;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .login-register {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-register p {
+            margin: 0;
+        }
+
+        .login-register a {
+            color: #007BFF;
+            text-decoration: none;
+            cursor: pointer; /* Change cursor to pointer for clickable links */
+        }
+
+        .login-register a:hover {
+            text-decoration: underline;
+        }
+
+        /* Additional styling for remember me section */
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+
+        .remember-forgot label {
+            color: #162938;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #af4c4c;
+            color: white;
+            border-radius: 5px;
+            font-size: 10px;
+            transition: background-color 0.3s;
+            margin-top: 10px; /* Adjust this value as necessary */
+        }
+
+        .info-text {
+            margin-bottom: 10px;
+            font-size: 10px;
+            color: #333;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #a04545;
+        }
+
+        #file-upload {
+            display: none; /* Hides the actual file input */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">Cart</a>
+            <a href="#">Contact</a>
+            <a href="#">About Us</a>
+            <button class="btnLogin-popup" onclick="showLogin()">Login</button>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <div class="form-box login active">
+            <h2>Login</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a class="register-link" onclick="showRegister()">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="container">
+                    
+                    <label for="file-upload" class="custom-file-upload">Attach valid ID</label>
+                    <input id="file-upload" type="file" name="uploadedFile" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account? <a class="login-link" onclick="showLogin()">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>

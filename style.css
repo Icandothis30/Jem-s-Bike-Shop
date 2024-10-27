@@ -1,0 +1,541 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*
+    background: url(' put the background here') no repeat;
+    background-size: cover;
+    background-position: center; */
+    background-color: #f4f4f4;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 100px;
+    background:transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: red;
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(6, 6, 6);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+  /*ito yung login button*/
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #331ab3;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #4927bc;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #181818;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 1s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: 0.5s;
+}
+
+.btnLogin-popup:hover {
+    background-color: #fff;
+    color: grey;
+}
+
+/* Wrapper for the form */
+.wrapper {
+    position: relative; 
+    width: 30px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255 ,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    /*overflow: hidden;*/
+    transition: height .2s ease;
+}
+.wrapper.active{
+    height: 520px;
+
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login {
+    transition: transform;
+    transform: translateX(0);
+       
+}
+.wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+.wrapper .form-box.register {
+    transition: transform;
+    transform: translateX(0);
+}
+.wrapper .active .form-box.register  {
+    transition: tranform.18s ease;
+    transform: translateX(0);
+}
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s ease-in-out;
+   
+}
+.form-box.register h2 {
+    margin-top: -10px; /* Adjust this value to lower the text */
+    font-size: 1.5em;
+    top: 20px;
+    right: 150px;
+    position: absolute;
+}
+
+.form-box.login h2 {
+    margin-top: 0px; /* Adjust this value to lower the text */
+    font-size: 1.5em;
+    top: 0px;
+    right: 165px;
+    position: absolute;
+}
+
+/*
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: ;
+}*/
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -10px; /* Adjust to match both inputs */
+    font-size: 0.85em; /* Slightly reduce label size on focus */
+    color: #162938;
+}
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #162938;
+    line-height: 57px;
+}
+
+
+
+.remember-forgot {
+    font-size:  .9em;
+    color: #162938;
+    font-weight: 500;
+    margin: -1px 0 15px;display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #162938;
+    margin-right: 3px;
+  
+    
+}
+
+.remember-forgot a {
+    color: #162938;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #617469;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color:  #fff;
+    font-weight: 500;   
+   
+
+}
+
+.login-register {
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 10 0px;
+    
+    
+}
+
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+  
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+   
+
+}
+
+
+.container {
+    text-align: center;
+
+}
+
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #af4c4c;
+    color: white;
+    border-radius: 5px;
+    font-size: 10px;
+    transition: background-color 0.3s;
+    margin-top: -20px; /* Adjust this value to raise the button */
+}
+
+.info-text {
+    margin-bottom: 10px; /* You can reduce this if necessary */
+    font-size: 10px;
+    color: #333;
+}
+
+
+.custom-file-upload:hover {
+    background-color: #a04545;
+}
+
+#file-upload {
+    display: none; /* Hides the actual file input last */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    flex-direction: column; /* Stack items vertically */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 5vw; /* Responsive padding */
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: red;
+    user-select: none;
+}
+
+.navigation {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: rgb(6, 6, 6);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2vw; /* Responsive margin */
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #331ab3;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #4927bc;
+    font-weight: 500;
+    margin-left: 2vw; /* Responsive margin */
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #181818;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 1s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.btnLogin-popup:hover {
+    background-color: #fff;
+    color: grey;
+}
+
+/* Wrapper for the form */
+.wrapper {
+    position: relative; 
+    width: 90%; /* Full width */
+    max-width: 400px; /* Limit max width */
+    height: auto; /* Adjust height */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; 
+    align-items: center;
+    transition: height .2s ease;
+}
+
+.wrapper.active {
+    height: auto; /* Adjust height for active */
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 20px; /* Adjust padding */
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s ease-in-out;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -10px; /* Adjust to match both inputs */
+    font-size: 0.85em; /* Slightly reduce label size on focus */
+    color: #162938;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #162938;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #617469;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.login-register {
+    font-size: .9em;
+    color: #162938;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 0px;
+}
+
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    header {
+        padding: 10px 5vw; /* Adjust padding for smaller screens */
+    }
+
+    .logo {
+        font-size: 1.8em; /* Smaller logo font size */
+    }
+
+    .navigation a {
+        font-size: 1em; /* Smaller font size for navigation links */
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 95%; /* Full width */
+    }
+
+    .wrapper .form-box {
+        padding: 15px; /* Adjust padding */
+    }
+
+    .btn {
+        height: 40px; /* Smaller button */
+    }
+}
+
+@media (max-width: 460px) {
+    .logo {
+        font-size: 1.5em; /* Even smaller logo font size */
+    }
+
+    .input-box {
+        height: 40px; /* Smaller input box */
+    }
+
+    .input-box input {
+        font-size: 0.9em; /* Smaller input font size */
+    }
+
+    .btn {
+        height: 35px; /* Smaller button */
+    }
+}
